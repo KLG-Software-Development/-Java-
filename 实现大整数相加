@@ -1,0 +1,68 @@
+import java.util.Scanner;
+public class text {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()){
+         String one =in.nextLine();
+         String two =in.nextLine();
+         System.out.println(加法(one,two));
+         break;
+        }
+    }
+    public static String 加法(String a,String b){
+        String[] text = a.split("");
+        String[] text1 = b.split("");
+        String fin="";
+        int x= text.length;
+        int y= text1.length;
+        int k,jinwei=0;
+        int c=0;
+        if (x>=y){
+            c=x+1;
+        }
+        else {c=y+1;
+        }
+        String[] sum= new String[c];
+        for(int i=0;i<sum.length-1;i++){
+            if(i<x&&i<y){
+               k=Integer.valueOf(text[x-i-1])+Integer.valueOf(text1[y-i-1])+jinwei;
+               if(k-10>=0)
+                   {k=k-10;jinwei=1;}
+               else
+                   {jinwei=0;}
+               sum[c-1-i]=String.valueOf(k);
+            }
+            else if (x-i-1<0){
+                k=Integer.valueOf(text1[y-i-1])+jinwei;
+                if(k-10>=0)
+                {k=k-10;jinwei=1;}
+                else
+                {jinwei=0;}
+                sum[c-1-i]=String.valueOf(k);
+            }
+            else if (y-i-1<0){
+                k=Integer.valueOf(text[x-i-1])+jinwei;
+                if(k-10>=0)
+                {k=k-10;jinwei=1;}
+                else
+                {jinwei=0;}
+                sum[c-1-i]=String.valueOf(k);
+            }
+        }
+        if (jinwei==1){
+            sum[0]=String.valueOf(1);
+            for (int i=0;i<sum.length;i++){
+                fin=fin+sum[i];
+            }
+        }
+        else {
+            sum[0] = String.valueOf(0);
+            for (int i=1;i<sum.length;i++){
+                fin=fin+sum[i];
+            }
+        }
+        return fin;
+
+
+    }
+}
