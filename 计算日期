@@ -1,0 +1,48 @@
+import java.util.Scanner;
+public class text2 {
+    public static void main(String[] args){
+        Scanner sc =new Scanner(System.in);
+        System.out.println("请输入当前日期：（年-月-日）");
+        while (sc.hasNext()) {
+            String input = sc.nextLine();
+            if(input.equals("end")){break;}
+            String[] x=input.split("-");
+            if (suanfa(x[0],x[1],x[2])>0){
+                  System.out.println(x[0]+"年"+x[1]+"月"+x[2]+"日是"+x[0]+"年第"+suanfa(x[0],x[1],x[2])+"天");
+            }
+            else System.out.println("无效输入");
+
+        }
+    }
+    public static Integer suanfa(String a,String b,String c){
+        int nian =Integer.valueOf(a);
+        int yue  =Integer.valueOf(b);
+        int ri   =Integer.valueOf(c);
+        int jieguo;
+        switch (yue){
+            case 1: jieguo=ri;break;
+            case 2: jieguo=31+ri;break;
+            case 3: jieguo=59+ri;break;
+            case 4: jieguo=80+ri;break;
+            case 5: jieguo=110+ri;break;
+            case 6: jieguo=141+ri;break;
+            case 7: jieguo=171+ri;break;
+            case 8: jieguo=202+ri;break;
+            case 9: jieguo=233+ri;break;
+            case 10:jieguo=263+ri;break;
+            case 11:jieguo=294+ri;break;
+            case 12:jieguo=324+ri;break;
+            default:jieguo=-100;
+        }
+        if (nian%4==0){
+            if (nian%400!=0){
+                jieguo=jieguo+0;
+            }
+            else if (nian%400==0&&yue>2){
+                jieguo=jieguo+1;
+            }
+        }
+        return jieguo;
+
+    }
+}
